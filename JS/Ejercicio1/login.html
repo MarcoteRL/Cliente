@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aula Estudio-Login or Sign up</title>
+        <link rel="stylesheet" href="styles/style2.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <main>
+            <div class="row">
+                <div class="colm-logo">
+                    <a href="index.html"><img
+                        src="img/cropped-Logo-una-tinta.png"
+                        alt="Logo"></a>                
+                </div>
+                <form action="" id="formulario">
+                    <div class="colm-form">
+                        <div class="form-container">
+                            <input type="text" id="userName" placeholder="Correo o teléfono">
+                            <input type="password" id="password"
+                                placeholder="Contraseña">
+                            <button class="btn-login" type="submit">Iniciar
+                                Sesión</button>
+                            <button class="btn-new"
+                                onclick="window.location.href='register.html'">Crear
+                                nueva cuenta</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <script>
+                const formulario = document.getElementById("formulario");
+                const userName = document.getElementById("userName");
+                const password = document.getElementById("password");
+
+                formulario.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    login(userName.value, password.value)
+                });
+            </script>
+        </main>
+    </body>
+</html>

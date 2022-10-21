@@ -1,0 +1,25 @@
+* {
+    background-color: rgb(46, 43, 43);
+    color: yellow;
+}
+
+script {
+    background-color: rgb(46, 43, 43);
+    color: yellow;
+}
+
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    font-size: 200px;
+    font-family: 'Cascadia Code';
+    display: table-cell;
+    vertical-align: middle;
+}

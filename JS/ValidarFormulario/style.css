@@ -1,0 +1,99 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin-top: 30px;
+    font-size: 70px;
+    font-weight: 600;
+    color: #fdfdfe;
+    text-shadow: 0px 0px 5px #5918f2, 0px 0px 10px #5918f2, 0px 0px 10px #5918f2,
+        0px 0px 20px #5918f2;
+    text-align: center;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1d2129;
+    color: #1c1e21;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.colm-form {
+    flex: 0 0 40%;
+    text-align: center;
+}
+
+.colm-form .form-container {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+    max-width: 400px;
+}
+
+.colm-form .form-container input, .colm-form .form-container .btn-login {
+    width: 100%;
+    margin: 5px 0;
+    height: 45px;
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+.colm-form .form-container input {
+    border: 1px solid #dddfe2;
+    color: #1d2129;
+    padding: 0 8px;
+    outline: none;
+}
+
+.colm-form .form-container input:focus {
+    border-color: #5918f2;
+    box-shadow: 0 0 0 2px #e7f3ff;
+}
+
+.colm-form .form-container .btn-login {
+    background-color: #5218f2;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    padding: 0 16px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.colm-form .form-container a {
+    display: block;
+    color: #1877f2;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 10px 0 20px;
+    border-bottom: 1px solid #dadde1;
+}
+
+button {
+    cursor: pointer;
+}
+
+.error {
+    background-color: rgba(167, 9, 9, 0.767);
+}
+
+.valid {
+    background-color: #42b72ab4;
+}

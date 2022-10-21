@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <title>Validación</title>
+    </head>
+    <body>
+        <h1>Validación Formulario</h1>
+        <div class="row">
+            <form action="" id="formulario">
+                <div class="colm-form">
+                    <div class="form-container">
+                        <input type="text" id="nombre" class="rojo"
+                            placeholder="Nombre" required>
+                        <input type="text" id="apellidos"
+                            placeholder="Apellidos" required>
+                        <input type="text" id="correo" placeholder="Correo electrónico" required>
+                        <input type="text" id="telefono" placeholder="Número teléfono" required>
+                        <button class="btn-login" type="submit">Validar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            const formulario = document.getElementById("formulario");
+            const nombre = document.getElementById("nombre");
+            const apellidos = document.getElementById("apellidos");
+            const correo = document.getElementById("correo");
+            const telefono = document.getElementById("telefono");
+
+            formulario.addEventListener("submit", (e) => {
+                e.preventDefault();
+                if(window.confirm("¿Estas seguro?")){
+                    validar(nombre);
+                    validar(apellidos);
+                    validarCorreo(correo);
+                    validarTelefono(telefono);
+                }else{
+                    window.open("index.html");
+                }
+            });
+        </script>
+    </body>
+</html>
