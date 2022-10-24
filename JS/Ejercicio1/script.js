@@ -1,5 +1,6 @@
 "use strict";
 
+
 // 1. Crea un programa que imprima todos los números impares entre el 0 y el 100.
 function impares() {
     let lista_impares = [];
@@ -353,5 +354,20 @@ function register(username, password) {
     }
 }
 
-console.log(DATABASE);
+// 20. Crea una página simple que cada 1 minuto te envíe un mensaje que diga: 
+// “llevas mucho tiempo en esta página web. ¿Te ha pasado algo? Para ello, pulsaremos un botón que diga. 
+// “Temporizador”. Con otro botón, “Detener”, detendremos el envío de mensajes.
+// Pista: para jugar con la temporalización, echaremos un vistazo a las funciones: setInterval(); 
+// setTimeout(); clearInterval(); clearTimeout();
 
+function mensaje() {
+    alert("Llevas mucho tiempo en esta página web. ¿Te ha pasado algo?");
+}
+
+const myInterval = () => {
+    setTimeout(mensaje, 10000);
+}
+
+function stopTemp() {
+    clearTimeout(myInterval);
+}
