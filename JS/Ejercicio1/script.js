@@ -1,6 +1,5 @@
 "use strict";
 
-
 // 1. Crea un programa que imprima todos los números impares entre el 0 y el 100.
 function impares() {
     let lista_impares = [];
@@ -370,4 +369,95 @@ const myInterval = () => {
 
 function stopTemp() {
     clearTimeout(myInterval);
+}
+
+
+// 22. Crea una web que reciba una palabra y determine si es palíndroma. 
+// Una palabra palíndroma es aquella que se lee del derecho y del revés de la misma manera.
+
+function esPalindromo() {
+    let palabra = prompt("Introduce una palabra, para ver si es palíndroma!")
+    if (palabra == palabra.split("").reverse().join("")) {
+        alert("Es palíndroma!")
+    } else {
+        alert("No es palíndroma!")
+    }
+}
+
+/**
+ * 23. Crea una web que reciba un DNI y compruebe que lo que se ha introducido es correcto.
+ *  MOD: modifica el ejercicio para que al poner el DNI, se ponga directamente la letra.
+ */
+
+function comprobarDNI() {
+    let letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+    let dni = prompt("Introduce el DNI sin letra!");
+    if (dni.length == 8 && dni > 0 && dni < 99999999) {
+        let letra = letras[dni % 23];
+        alert("La letra del DNI es: " + letra);
+    } else {
+        alert("Introduce un DNI válido!")
+    }
+}
+
+/** 24. Crear una página que reciba una palabra y determine su composición: 
+ * todo mayúsculas, todo minúsculas, mezcla (contar mayúsculas y minúsculas), 
+ * cuantos números si los tiene…
+ */
+
+function contarTodoPalabra() {
+    let obj = {
+        contadorMayus: 0,
+        contadorMinus: 0,
+        contadorLetras: 0,
+        contadorNumeros: 0
+    }
+    let introducido = prompt("Escribe una palabra!");
+    for (let letra of introducido) {
+        if (letra != " ") {
+            if (isNaN(letra)) {
+                obj.contadorLetras++;
+                if (letra === letra.toUpperCase()) {
+                    obj.contadorMayus++;
+                } else {
+                    obj.contadorMinus++;
+                }
+            } else {
+                obj.contadorNumeros++;
+            }
+        }
+    }
+    alert("La palabra " + '"' + introducido + '"' + " tiene: " + "\n" + "Letras: " +
+        obj.contadorLetras + "\n" + "Mayúsculas: " + obj.contadorMayus + "\n" + "Minúsculas: " + obj.contadorMinus +
+        "\n" + "Números: " + obj.contadorNumeros)
+}
+/**
+ * 25. Crear una expresión regular que valide una fecha en formato XX/XX/XXXX
+ */
+
+function validarFecha() {
+    let regex = /^(?:(?:(?:0?[1-9]|1\d|2[0-8])[/](?:0?[1-9]|1[0-2])|(?:29|30)[/](?:0?[13-9]|1[0-2])|31[/](?:0?[13578]|1[02]))[/](?:0{2,3}[1-9]|0{1,2}[1-9]\d|0?[1-9]\d{2}|[1-9]\d{3})|29[/]0?2[/](?:\d{1,2}(?:0[48]|[2468][048]|[13579][26])|(?:0?[48]|[13579][26]|[2468][048])00))$/;
+    let fecha = prompt("Introduce una fecha en el siguiente formato: DD/MM/AAAA: ");
+    let splitted = fecha.split("/");
+    if (splitted.length < 3) {
+        alert("Formato inválido!");
+    } else {
+        if (regex.test(fecha)) {
+            alert("Fecha correcta!")
+        } else {
+            alert("La fecha introducida no existe!")
+        }
+    }
+}
+/**
+ * Crear una expresión regular que valide un correo electrónico.
+ */
+function validarEmail(){
+    let email = prompt("Introduce tu correo electronico: ")
+    let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(regex.test(email)){
+        alert("El email es correcto!");
+    }else{
+        alert("El email no es válido!");
+    }
 }
