@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+* {
+    background-color: rgb(43, 40, 40);
+    margin: 0
+}
+
+h1 {
+    font-size: 80px;
+    color: white;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+}
+
+img {
+    margin-top: 10px;
+    margin-left: 40px;
+    padding: 50px;
+    width: 280px;
+    height: auto;
+    cursor: pointer;
+}
+
+img:hover {
+    opacity: 0.3;
+}
