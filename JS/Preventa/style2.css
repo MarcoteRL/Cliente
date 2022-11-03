@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    font-size: 80px;
+    margin-top:20px;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, #f32170, #ff6b08,
+            #cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background: #272626;
+    color: #363639;
+    font-family: 'Work Sans', sans-serif;
+}
+
+
+#cuenta {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.simply-section {
+    background: #fff;
+    width: 180px;
+    height: 180px;
+    margin: 0 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.simply-amount {
+    display: block;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.simply-word {
+    font-weight: 300;
+    font-size: 30px;
+}
+
+button {
+    position: relative;
+    cursor: pointer;
+    border: none;
+    width: 150px;
+    height: 40px;
+    border-radius: 50px;
+    outline: none;
+    background: linear-gradient(90deg, #EC37D0, #D92B2B, #FFAA0D, #EC37D0);
+    background-size: 400%;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 4px;
+    align-items: center;
+    margin: 0;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, #EC37D0, #D92B2B, #FFAA0D, #EC37D0);
+    background-size: 400%;
+    border-radius: 50px;
+    opacity: 0;
+    transition: .5s;
+}
+
+button:hover {
+    animation: animate 10s linear infinite;
+}
+
+button:hover::before {
+    filter: blur(25px);
+    opacity: .8;
+    animation: animate 10s linear infinite;
+}

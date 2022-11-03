@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Preventa</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="css/simplyCountdown.theme.default.css"/>
+        <script src="dist/simplyCountdown.min.js"></script>
+    </head>
+    <body>
+        <a href="index.html"><img src="img/logo.png" alt=""></a>
+        <div class="producto">
+            <img src="img/iphone3.png" alt="movil">
+            <div class="desc">
+                <h2>iPhone 12 Pro Max</h2>
+                <p>El Apple iPhone 12 Pro Max es la variante con mayor
+                    tamaño de pantalla de la serie iPhone 12. Con una
+                    pantalla OLED de 6.7 pulgadas, el iPhone 12 Pro Max
+                    cuenta con un procesador Apple A14 Bionic con opciones
+                    de 128GB, 256GB, o 512GB de almacenamiento y cámara
+                    cuádruple con tres lentes de 12 megapixels.</p>
+                <BR></BR>
+                <form class="signUp" action="" method="get">
+                    <div class="formGroup">
+                        <input type="text" id="Nombre" placeholder="Nombre"
+                            autocomplete="off">
+                            <br>
+                        <input type="text" placeholder="Apellidos"
+                            name="apellidos"
+                            required autocomplete="off">
+                            <br>
+                        <input type="email" id="email"
+                            placeholder="Email" required autocomplete="off">
+                        <button type="button" class="btn2">Regístrate</button>
+                    </div>
+                </form>
+            </div>
+            <div class="contador">
+
+            </div>
+
+        </div>
+        <script>
+            simplyCountdown('[CSS-SELECTOR]', {
+                year: 2023, // required
+                month: 6, // required
+                day: 28, // required
+                hours: 17, // Default is 0 [0-23] integer
+                minutes: 0, // Default is 0 [0-59] integer
+                seconds: 0, // Default is 0 [0-59] integer
+                words: { //words displayed into the countdown
+                    days: { singular: 'day', plural: 'days' },
+                    hours: { singular: 'hour', plural: 'hours' },
+                    minutes: { singular: 'minute', plural: 'minutes' },
+                    seconds: { singular: 'second', plural: 'seconds' }
+                },
+                plural: true, //use plurals
+                inline: false, //set to true to get an inline basic countdown like : 24 days, 4 hours, 2 minutes, 5 seconds
+                inlineClass: 'simply-countdown-inline', //inline css span class in case of inline = true
+                // in case of inline set to false
+                enableUtc: false,
+                onEnd: function () {
+                    // your code
+                    return;
+                },
+                refresh: 1000, //default refresh every 1s
+                sectionClass: 'simply-section', //section css class
+                amountClass: 'simply-amount', // amount css class
+                wordClass: 'simply-word', // word css class
+                zeroPad: false,
+                countUp: false, // enable count up if set to true
+        });
+    
+        // Also, you can init with already existing Javascript Object.
+        let myElement = document.querySelector('.my-countdown');
+        simplyCountdown(myElement, { /* options */ });
+    
+        let multipleElements = document.querySelectorAll('.my-countdown');
+        simplyCountdown(multipleElements, { /* options */ });
+        </script>
+    </body>
+</html>

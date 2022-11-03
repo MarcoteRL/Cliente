@@ -1,0 +1,109 @@
+* {
+    background-color: black;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+img {
+    margin-top: 0;
+    margin-left: 12px;
+    margin-bottom: 12px;
+    width: 40px;
+}
+
+.producto {
+    float: right;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.producto P {
+    text-align: justify;
+    color: white;
+}
+
+.producto h2 {
+    text-align: center;
+    background: linear-gradient(to right, #f32170, #ff6b08,
+            #cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.producto img {
+    width: 250px;
+    height: auto;
+    margin-left: 20%;
+    float: left;
+}
+
+.desc {
+    margin-left: 55%;
+    margin-right: 10%;
+    color: white;
+}
+
+form {
+    /* box-shadow: 0 3px 20px white; */
+    justify-content: center;
+    width: auto;
+    justify-content: center;
+    align-items: center !important;
+}
+
+input {
+    border: none;
+    border-bottom: 2px solid white;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.formGroup {
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(36, 34, 34);
+    padding-bottom: 10px;
+    border-radius: 35px;
+}
+
+.formGroup input {
+    border: none;
+    width: 80%;
+    border-bottom: 2px solid white;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: transparent;
+    color: white;
+}
+
+input:focus {
+    outline: none !important;
+    border-bottom: 2px solid rgb(10, 96, 136);
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+}
+
+::placeholder {
+    color: white;
+}
+
+.btn2 {
+    padding: 10px;
+    width: 150px;
+    border-radius: 20px;
+    background-color: rgb(10, 96, 136);
+    border-style: none;
+    color: white;
+    font-weight: 600;
+}
+
+.btn2:hover {
+    background-color: rgb(10, 96, 136);
+}
+
+.btn button:hover {
+    border-bottom: 2px solid rgb(91, 243, 131);
+}
