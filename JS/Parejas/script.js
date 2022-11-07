@@ -1,39 +1,40 @@
 "use strict";
 
-let lista = {
-    0: 2,
-    1: 2,
-    2: 2,
-    3: 2,
-    4: 2,
-    5: 2,
-    6: 2,
-    7: 2
-}
+// let lista = {
+//     0: 2,
+//     1: 2,
+//     2: 2,
+//     3: 2,
+//     4: 2,
+//     5: 2,
+//     6: 2,
+//     7: 2
+// }
 
 console.log(lista.length);
 
 function crearTablero() {
-    
-    
-    const body = document.body,
-        tbl = document.createElement('table');
+    let lista = [];
     for (let i = 0; i < 4; i++) {
-        let aleatorio = lista[Math.floor(Math.random() * Object.keys(lista).length)]
-        const tr = tbl.insertRow();
-        let ampliar = 0;
-        for (let j = 1; j <= 4; j++) {
-            
-            if (i > 0) {
-                ampliar = i * 4;
-            }
-            const td = tr.insertCell();
-            td.setAttribute("id", `${aleatorio}`)
-            td.appendChild(document.createTextNode(ampliar + j));
-            lista[aleatorio]--;
-
-
+        lista.push([]);
+        for (let j = 0; j < 4; j++) {
+            lista[i].push(j);
         }
     }
-    body.appendChild(tbl);
+    return lista;
+}
+
+let lista = crearTablero();
+
+console.log(crearTablero().length)
+
+function impresora() {
+    let element = document.getElementById("tabla").innerHTML;
+    for (let y = 0; y < lista.length; y++) {
+        element += "<tr>";
+        for (let x = 0; x < lista.length; x++) {
+            element += `<td id='${x}'></td>`
+        }
+    }
+    element += "</tr>";
 }
