@@ -1,13 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="script.js"></script>
-</head>
-<body>
-    
-</body>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+        <div class="container">
+            <h1>AHORCADO</h1>
+            <form action="" id="formulario">
+                <input type="text" name="letra" id="letra"
+                    placeholder="Introduce una letra" maxlength="1">
+                <input type="submit" value="enviar">
+            </form>
+
+            <div id="intentos">
+                <p>Intentos: </p>
+                <p id="resultado"></p>
+                <img src="img/1.png" alt="" id="imagen">
+            </div>
+
+            <div id="historial">
+                <p id="usadas"></p>
+            </div>
+
+            <p id="palabra"><script>mostrarPalabra()</script></p>
+        </div>
+
+        <script>
+            const formulario = document.getElementById("formulario");
+            const letra = document.getElementById("letra");
+
+            formulario.addEventListener("submit", (e) => {
+                e.preventDefault();             
+                    ahorcado(letra);
+                    letra.value= "";
+            });   
+        </script>
+    </body>
 </html>
