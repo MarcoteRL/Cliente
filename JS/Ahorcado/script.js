@@ -2,34 +2,34 @@
 
 let intentos = 5;
 let historial = [];
+let palabraRandom = "";
 
-function palabra() {
-    let arr = ["hola", "adios", "paraguayo"];
-    return arr[Math.floor(Math.random() * arr.length)]
-}
+fetch('https://palabras-aleatorias-public-api.herokuapp.com/random')
+    .then(response => response.json())
+    .then(data => {
+        palabraRandom = data.body["Word"]
+    })
+    .then(() => { mostrarPalabra() });
 
-const palabraRandom = palabra();
-console.log(palabraRandom);
-
-function mostrarPalabra() {
+async function mostrarPalabra() {
+    console.log({ palabraRandom })
+    console.log("entro")
     let guiones = "";
     for (let letter of palabraRandom) {
         guiones += "_ ";
     }
     guiones = guiones.substring(0, guiones.length - 1);
+    console.log({ guiones })
     document.getElementById("palabra").innerHTML = guiones;
     document.getElementById("resultado").innerHTML = intentos;
 }
 
-
-async function ahorcado(letra) {
+function ahorcado(letra) {
     if (!historial.includes(letra.value) && isNaN(letra.value) && intentos > 0) {
         historial.push(letra.value);
     } else {
-        return
+        return;
     }
-    intentos = parseInt(intentos);
-    console.log({ intentos });
     let encontrado = false;
     let guiones = document.getElementById("palabra").innerHTML;
     let guionesSplitted = guiones.split(" ");
@@ -41,41 +41,47 @@ async function ahorcado(letra) {
                 encontrado = true;
             }
         }
+        if (guionesSplitted.join(" ") == palabraRandom) {
+            alert("Has ganado")
+        }
     }
     if (!encontrado) {
         intentos--;
     }
     switch (intentos) {
         case 0:
-            document.getElementById("imagen").src = "img/6.png"
+            document.getElementById("imagen").src = "img/6.png";
             break;
         case 1:
-            document.getElementById("imagen").src = "img/5.png"
+            document.getElementById("imagen").src = "img/5.png";
             break;
         case 2:
-            document.getElementById("imagen").src = "img/4.png"
+            document.getElementById("imagen").src = "img/4.png";
             break;
         case 3:
-            document.getElementById("imagen").src = "img/3.png"
+            document.getElementById("imagen").src = "img/3.png";
             break;
         case 4:
-            document.getElementById("imagen").src = "img/2.png"
+            document.getElementById("imagen").src = "img/2.png";
             break;
         case 5:
             console.log("entro")
-            document.getElementById("imagen").src = "img/1.png"
+            document.getElementById("imagen").src = "img/1.png";
             break;
-
         default:
             break;
     }
     if (intentos > 0) {
         document.getElementById("resultado").innerHTML = intentos;
+
     } else {
         document.getElementById("resultado").innerHTML = "Has perdido";
-        alert(`Mamaste weon, la palabra era: ${palabraRandom}`)
+        alert(`Mamaste weon, la palabra era: ${palabraRandom}`);
     }
-
+    console.log(palabraRandom)
     document.getElementById("palabra").innerHTML = guionesSplitted.join(" ");
     document.getElementById("usadas").innerHTML = historial;
+    if (document.getElementById("palabra").innerHTML.split(" ").join("") == palabraRandom) {
+        alert("Has ganado")
+    }
 }
