@@ -4,7 +4,9 @@ let intentos = 5;
 let historial = [];
 let palabraRandom = "";
 
-fetch('https://palabras-aleatorias-public-api.herokuapp.com/random')
+fetch('https://palabras-aleatorias-public-api.herokuapp.com/random', {
+    mode: 'no-cors'
+})
     .then(response => response.json())
     .then(data => {
         palabraRandom = data.body["Word"]
@@ -44,6 +46,7 @@ function ahorcado(letra) {
         if (guionesSplitted.join(" ") == palabraRandom) {
             alert("Has ganado")
         }
+        document.getElementById("resultado").innerHTML = intentos;
     }
     if (!encontrado) {
         intentos--;
@@ -71,10 +74,8 @@ function ahorcado(letra) {
         default:
             break;
     }
-    if (intentos > 0) {
-        document.getElementById("resultado").innerHTML = intentos;
 
-    } else {
+    if (intentos == 0) {
         document.getElementById("resultado").innerHTML = "Has perdido";
         alert(`Mamaste weon, la palabra era: ${palabraRandom}`);
     }

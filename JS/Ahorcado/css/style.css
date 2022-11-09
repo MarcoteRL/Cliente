@@ -2,12 +2,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 90px;
     text-align: center;
+    background-color: rgb(51, 50, 50);
+    color: white
 }
 
 h1 {
     text-align: center;
+    color: white
+}
+
+img {
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 2px black;
 }
 
 input[type=text] {
