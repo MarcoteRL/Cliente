@@ -1,24 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap');
+
 body {
-    background-color: black;
+    background-color: rgb(46, 43, 43);
 }
 
-table {
-    padding: 0;
-    font-size: 30px;
+h1 {
+    color: yellow;
     text-align: center;
-    width: 200px;
-    height: 200px;
-    background-color: rgb(44, 43, 43);
+    font-size: 60px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    font-weight: 800;
 }
 
-td {
-    margin: 0;
-    padding: 0;
-    border: 2px solid white;
-    color: white;
+#juego {
+    display: table;
+    margin: 0 auto;
 }
 
-tr{
-    padding: 0;
-    margin:0
+button {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+}
+
+
+.pareja1 {
+    background-image: url("img/pareja1.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.pareja2 {
+    background-image: url("img/pareja2.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.pareja3 {
+    background-image: url("img/pareja3.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.pareja4 {
+    background-image: url("img/pareja4.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.pareja5 {
+    background-image: url("img/pareja5.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.pareja6 {
+    background-image: url("img/pareja6.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.pareja7 {
+    background-image: url("img/pareja7.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.pareja8 {
+    background-image: url("img/pareja8.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.disable {
+    transition: 1s;
+    background-image: none;
 }

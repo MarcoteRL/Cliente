@@ -1,40 +1,34 @@
 "use strict";
 
-// let lista = {
-//     0: 2,
-//     1: 2,
-//     2: 2,
-//     3: 2,
-//     4: 2,
-//     5: 2,
-//     6: 2,
-//     7: 2
-// }
+let contador = 0;
+let last_id = 0;
 
-console.log(lista.length);
-
-function crearTablero() {
-    let lista = [];
-    for (let i = 0; i < 4; i++) {
-        lista.push([]);
-        for (let j = 0; j < 4; j++) {
-            lista[i].push(j);
-        }
+function juego(id) {
+    let disable = document.getElementsByClassName("disable");
+    let element = document.getElementById(id);
+    let lastElement = document.getElementById(last_id);
+    console.log(id)
+    contador++;
+    if (contador == 1) {
+        element.classList.remove("disable");
     }
-    return lista;
-}
-
-let lista = crearTablero();
-
-console.log(crearTablero().length)
-
-function impresora() {
-    let element = document.getElementById("tabla").innerHTML;
-    for (let y = 0; y < lista.length; y++) {
-        element += "<tr>";
-        for (let x = 0; x < lista.length; x++) {
-            element += `<td id='${x}'></td>`
+    if (contador == 2) {
+        element.classList.remove("disable");
+        if (last_id + "_1" == id || last_id == id + "_1") {
+            lastElement.classList.remove("disable");
+        } else {
+            setTimeout(() => {
+                element.classList.add("disable");
+                lastElement.classList.add("disable");
+            }, 500)
         }
+        contador = 0;
     }
-    element += "</tr>";
+    last_id = id;
+    if (disable.length == 0) {
+        setTimeout(() => {
+            alert("Ganaste");
+            location.reload();
+        }, 600)
+    }
 }
