@@ -10,7 +10,7 @@
 
 header {
     height: 90px;
-    background: #546FE7;
+    background: rgb(221, 148, 12);
     margin-bottom: 3%;
 }
 
@@ -31,7 +31,7 @@ header {
 }
 
 #FP {
-    color: #273b91;
+    color: black;
     font-weight: 900;
 }
 
@@ -61,13 +61,62 @@ header {
     transform: scale(1.2);
 }
 
-main{
+main {
     display: table;
     margin: 0 auto;
 }
 
-button{
-    margin-right: 50px;
+button {
+    margin-right: 20px;
     width: 300px;
     height: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover{
+    transform: scale(110%);
+}
+
+.product_1 {
+    background-image: url("../img/rtx3080.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.product_2 {
+    background-image: url("../img/rx6950xt.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.product_3 {
+    background-image: url("../img/gtx1650.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.product_4 {
+    background-image: url("../img/rtx3080.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.product_5 {
+    background-image: url("../img/rx6950xt.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.product_6 {
+    background-image: url("../img/gtx1650.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
