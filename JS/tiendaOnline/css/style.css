@@ -75,7 +75,7 @@ button {
     cursor: pointer;
 }
 
-button:hover{
+button:hover {
     transform: scale(110%);
 }
 
@@ -119,4 +119,24 @@ button:hover{
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+a span {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    top: 15px;
+    right: 20px;
+    font-size: 15px;
+    border-radius: 50%;
+    background: rgb(230, 57, 57);
+    color: #fff;
+}
+
+a {
+    font-size: 33px;
+    color: black;
+    position: relative;
 }

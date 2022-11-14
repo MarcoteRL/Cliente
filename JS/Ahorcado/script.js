@@ -4,7 +4,7 @@ let intentos = 5;
 let historial = [];
 let palabraRandom = "";
 
-fetch('https://palabras-aleatorias-public-api.herokuapp.com/random')
+fetch('https://www.palabras-aleatorias-public-api.herokuapp.com/random')
     .then(response => response.json())
     .then(data => {
         palabraRandom = data.body["Word"]
