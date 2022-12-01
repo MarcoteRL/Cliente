@@ -1,0 +1,73 @@
+* {
+    background-color: rgb(59, 56, 56) !important;
+}
+
+h1 {
+    margin-top: 3%;
+    color: yellow;
+    text-align: center;
+    font-size: 60px;
+}
+
+#cpu {
+    float: right !important;
+}
+
+table {
+    box-shadow: 0.5rem 0.5rem black, -0.5rem -0.5rem #ccc;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    font-size: large;
+}
+
+table td {
+    background-color: yellow !important;
+}
+
+button {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 15px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    height: auto;
+    font-size: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 5%;
+    background-color: yellow !important;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+#aleatorio {
+    background-color: white !important;
+    border-radius: 50%;
+    padding: 40px;
+    float: left;
+    margin-top: 200px;
+    margin-left: 60px;
+    font-size: 40px;
+    color: black;
+}
+
+#ganador {
+    border-radius: 15px;
+    padding: 10px;
+    float: left;
+    margin-top: 200px;
+    margin-left: 60px;
+    font-size: 70px;
+    color: yellow;
+}
+
+.active {
+    color: red;
+}
