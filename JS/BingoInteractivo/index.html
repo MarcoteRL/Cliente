@@ -19,16 +19,22 @@
     </head>
     <body>
         <h1>BINGO</h1>
-        <div class="col-xs-6">
-            <div id="jugador">
-                <script>mostrarTabla(listaPlayer)</script>
-            </div>
-            <div id="cpu">
-                <script>mostrarTabla(listaCPU)</script>
-            </div>
-            <h2 id="aleatorio">Tira</h2>
-            <h2 id="ganador"></h2>
+        <div id="jugador">
+            <script>mostrarTabla(listaPlayer)</script>
+            <p class="letraPlayer">Jugador</p>
         </div>
-        <button onclick="activar()">Tirar</button>
+        <div id="cpu">
+            <script>mostrarTabla(listaCPU)</script>
+            <p class="letraCPU">CPU</p>
+        </div>
+        <h2 id="aleatorio">Tira</h2>
+        <h2 id="ganador"></h2>
+
+        <br>
+        <div class="container justify-content-center">
+            <div class="col-12">
+                <button id="tirar" onclick="activar()">Tirar</button>
+            </div>
+        </div>
     </body>
 </html>

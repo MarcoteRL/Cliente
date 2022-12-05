@@ -9,21 +9,21 @@ h1 {
     font-size: 60px;
 }
 
-#cpu {
-    float: right !important;
-}
 
 table {
     box-shadow: 0.5rem 0.5rem black, -0.5rem -0.5rem #ccc;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     text-align: center;
     font-size: large;
+    margin-right: 10%;
+    margin-left: 10%;
 }
+
 
 table td {
     background-color: yellow !important;
@@ -32,15 +32,18 @@ table td {
 button {
     text-transform: uppercase;
     font-weight: bold;
-    padding: 15px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    height: auto;
+    width: 150px;
+    height: 150px;
     font-size: 25px;
     border-radius: 50%;
     cursor: pointer;
-    margin-left: 5%;
+    margin-left: 10%;
     background-color: yellow !important;
+}
+
+#tirar {
+    position: absolute;
+    top: 70%
 }
 
 button:hover {
@@ -50,24 +53,44 @@ button:hover {
 #aleatorio {
     background-color: white !important;
     border-radius: 50%;
-    padding: 40px;
+    padding: 80px;
     float: left;
-    margin-top: 200px;
-    margin-left: 60px;
+    margin-left: 20px;
     font-size: 40px;
     color: black;
+    position: absolute;
+    top: 21%;
+    left: 40%;
 }
 
 #ganador {
     border-radius: 15px;
     padding: 10px;
-    float: left;
-    margin-top: 200px;
-    margin-left: 60px;
-    font-size: 70px;
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    font-size: 50px;
     color: yellow;
 }
 
 .active {
     color: red;
+}
+
+.letraPlayer {
+    position: absolute;
+    left: 13%;
+    top: 14%;
+    font-weight: bold;
+    color: yellow;
+    font-size: 30px;
+}
+
+.letraCPU {
+    position: absolute;
+    right: 15%;
+    top: 14%;
+    font-weight: bold;
+    color: yellow;
+    font-size: 30px;
 }

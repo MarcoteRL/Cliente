@@ -18,8 +18,13 @@ async function removeNumber(number, lista) {
 async function mostrarTabla(lista) {
     const body = document.body,
         tbl = document.createElement('table');
-    tbl.setAttribute("class", `${lista.name}`)
-    tbl.classList.add("table-responsive")
+    tbl.setAttribute("class", `${lista.name}`);
+    if (lista.name === "listaPlayer") {
+        tbl.setAttribute("class", "float-start")
+    } else {
+        tbl.setAttribute("class", "float-end");
+    }
+    tbl.classList.add("table-responsive");
     for (let i = 0; i < 5; i++) {
         const tr = tbl.insertRow();
         for (let j = 1; j <= 5; j++) {
