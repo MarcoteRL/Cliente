@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+}
+
+header {
+    height: 90px;
+    background: rgb(221, 148, 12);
+    margin-bottom: 3%;
+}
+
+.navbar {
+    max-width: 100%;
+    padding: 0 10px;
+    margin: auto;
+}
+
+.logo {
+    font-family: 'Nunito', sans-serif;
+    margin-left: 3%;
+    float: left;
+    padding: 27px 0;
+    color: #fff;
+    font-weight: 400;
+    text-shadow: 1px 2px 1.5px rgba(0, 0, 0, 0.3);
+}
+
+#FP {
+    color: black;
+    font-weight: 900;
+}
+
+.menu {
+    font-family: 'Poppins', sans-serif;
+    margin-right: 3%;
+    float: right;
+    display: flex;
+    align-items: center;
+    min-height: 90px;
+}
+
+.menu img {
+    width: 50px;
+    text-decoration: none;
+    margin-left: 10px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    transition: .3s linear;
+}
+
+.menu img:hover {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+main {
+    display: table;
+    margin: 0 auto;
+}
+
+button {
+    margin-right: 20px;
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(110%);
+}
+
+.product_1 {
+    background-image: url("../img/rtx3080.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.product_2 {
+    background-image: url("../img/rx6950xt.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.product_3 {
+    background-image: url("../img/gtx1650.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.product_4 {
+    background-image: url("../img/rtx3080.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.product_5 {
+    background-image: url("../img/rx6950xt.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.product_6 {
+    background-image: url("../img/gtx1650.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+a span {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    top: 15px;
+    right: 20px;
+    font-size: 15px;
+    border-radius: 50%;
+    background: rgb(230, 57, 57);
+    color: #fff;
+}
+
+a {
+    font-size: 33px;
+    color: black;
+    position: relative;
+}
