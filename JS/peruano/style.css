@@ -1,4 +1,8 @@
-html{
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html {
     background-color: rgb(54, 51, 51);
     color: white;
 }
@@ -8,31 +12,59 @@ html{
     height: 10vh;
 }
 
+.titulo{
+    text-decoration: none;
+}
+
 .contenido {
+    font-family: 'Poppins', sans-serif;
     display: flex;
-    height: 80vh;
+    min-height: 100vh;
+    margin-bottom:150px;
+    
 }
 
-.contenidos{
-    margin-left: 3%;
+iframe{
+    margin-bottom: 3%;
 }
 
-.final{
-    height: 10vh;
+.contenidos {
+    padding-left: 3%;
+    padding-right: 2%;
+    margin-left: 16vw;
+    margin-right: 21vw;
+}
+
+.final {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 8vh;
+    background-color: #101010;
+    text-align: center;
+    font-family: 'Play', sans-serif;
+    padding-top: 20px;
+    margin-top: auto;
 }
 
 .menu {
     float: left;
-    width: 20vw;
+    width: 15vw;
+    position: fixed;
     left: 0;
-    padding-top: 20px;  
+    padding-top: 20px;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.377);
+    height: 100vh;
 }
 
 .menu a {
     padding: 8px 8px 8px 36px;
     text-decoration: none;
-    font-size: 25px;
-    color:yellow;
+    font-family: 'Play', sans-serif;
+    font-size: 120%;
+    color: yellow;
     padding-top: 20%;
     display: block;
 }
@@ -42,6 +74,43 @@ html{
 }
 
 .lateral {
-    max-width: 30vw;
+    width: 14vw;
+    right: 0;
+    position: fixed;
     float: right;
+    padding-top: 20px;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.377);
+    height: 100vh;
+    padding-left: 2%;
+    padding-right: 2%;
+
+}
+
+.lateral img {
+    padding-top: 20px;
+    width: 15vw;
+}
+
+.lateral img:hover {
+    transform: scale(1.05);
+}
+
+.logo {
+
+    margin: auto;
+    display: block;
+    text-align: center;
+    width: 100px;
+}
+
+.cabecera h1 {
+    font-size: 50px;
+    color: blueviolet;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.contenidos h2{
+    color:yellow;
+    font-size: xx-large;
 }
