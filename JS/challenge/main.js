@@ -24,7 +24,7 @@ async function getRatio(url) {
         const page = await browser.newPage();
         const response = await page.goto(url);
         const image = await page.evaluate(() => {
-            return document.getElementsByTagName("img").width;
+            return document.getElementsByTagName("img");
         })
         const body = await response.text();
         const { window: { document } } = new jsdom.JSDOM(body);

@@ -63,7 +63,7 @@ document.addEventListener("keypress", (e) => {
     if (e.key === "w") {
 
     } else if (e.key === "a") {
- 
+
     } else if (e.key === "s") {
 
     } else if (e.key === "d") {
