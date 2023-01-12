@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(24, 95, 2);
+}
+
+table {
+    margin-top: 1%;
+    border-spacing: 0;
+}
+
+td {
+    text-align: center;
+    padding: 0;
+    width: 33px;
+    height: 33px;
+}
+
+img {
+    width: 29px;
+    height: 29px;
+}
+
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+}
+
+#par {
+    background-color: rgb(54, 163, 11);
+}
+
+#impar {
+    background-color: rgb(80, 207, 21);
+}
+
+
+.serpiente {
+    background-color: black;
+}
