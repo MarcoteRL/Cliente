@@ -1,6 +1,8 @@
 "use strict";
 
 let tablero = [];
+let head = [];
+let tail = [];
 for (let y = 0; y < 15; y++) {
     tablero.push([]);
     for (let x = 0; x < 15; x++) {
@@ -8,8 +10,7 @@ for (let y = 0; y < 15; y++) {
     }
 }
 
-function background() {
-    showApple(tablero);
+async function background(tablero) {
     const body = document.body,
         tbl = document.createElement('table');
     tbl.id = "tabla";
@@ -49,24 +50,48 @@ function showApple(tablero) {
     tablero[y][x].manzana = true;
 }
 
-function colocarSnake(tablero) {
-    tablero[8][4].snake = true;
-    tablero[8][5].snake = true;
+async function colocarSnake(tablero) {
+    tablero[7][2].snake = true;
+    tablero[7][3].snake = true;
+    head = { y: 7, x: 3 };
+    tail = { y: 7, x: 4 };
 }
 
-function game() {
+async function game() {
     colocarSnake(tablero);
-    background();
+    showApple(tablero);
+    background(tablero);
 }
 
-document.addEventListener("keypress", (e) => {
-    if (e.key === "w") {
+async function actualizar(tablero) {
+    const element = document.getElementById("tabla");
+    console.log('element', element)
+    element.remove();
+    await background(tablero);
+}
 
-    } else if (e.key === "a") {
-
-    } else if (e.key === "s") {
-
-    } else if (e.key === "d") {
-
+document.addEventListener("keypress", async (e) => {
+    if (e.key === "w" || e.key === "a" || e.key === "s" || e.key === "d") {
+        await movimiento(e.key, tablero);
+        await actualizar(tablero);
     }
 });
+
+async function movimiento(key, tablero) {
+    if (key === "s") {
+        tablero[head.y + 1][head.x].snake = true;
+        head.y++
+        tablero[tail.y][tail.x].snake = false;
+        tail.y++;
+        console.log(tablero);
+    } else if (key === "a") {
+
+    } else if (key === "s") {
+
+    } else if (key === "d") {
+        tablero[head.y][head.x + 1].snake = true;
+        head.x++;
+        tablero[tail.y][tail.x].snake = false;
+        tail.x++;
+    }
+}

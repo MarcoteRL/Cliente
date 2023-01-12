@@ -10,6 +10,8 @@ body {
     background-color: rgb(24, 95, 2);
 }
 
+
+
 table {
     margin-top: 1%;
     border-spacing: 0;
@@ -40,7 +42,6 @@ h1 {
     background-color: rgb(80, 207, 21);
 }
 
-
 .serpiente {
-    background-color: black;
+    background-color: black !important;
 }
