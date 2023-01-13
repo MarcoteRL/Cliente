@@ -65,7 +65,6 @@ async function game() {
 
 async function actualizar(tablero) {
     const element = document.getElementById("tabla");
-    console.log('element', element)
     element.remove();
     await background(tablero);
 }
@@ -89,6 +88,7 @@ async function movimiento(key, tablero) {
     } else if (key === "s") {
 
     } else if (key === "d") {
+        console.log("d");
         tablero[head.y][head.x + 1].snake = true;
         head.x++;
         tablero[tail.y][tail.x].snake = false;
