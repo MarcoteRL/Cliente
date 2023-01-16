@@ -1,8 +1,8 @@
 "use strict";
 
 let tablero = [];
-let head = [];
-let tail = [];
+let head;
+let tail;
 for (let y = 0; y < 15; y++) {
     tablero.push([]);
     for (let x = 0; x < 15; x++) {
@@ -54,7 +54,7 @@ async function colocarSnake(tablero) {
     tablero[7][2].snake = true;
     tablero[7][3].snake = true;
     head = { y: 7, x: 3 };
-    tail = { y: 7, x: 4 };
+    tail = { y: 7, x: 2 };
 }
 
 async function game() {
@@ -65,7 +65,6 @@ async function game() {
 
 async function actualizar(tablero) {
     const element = document.getElementById("tabla");
-    console.log('element', element)
     element.remove();
     await background(tablero);
 }
@@ -77,21 +76,31 @@ document.addEventListener("keypress", async (e) => {
     }
 });
 
+let last;
+
 async function movimiento(key, tablero) {
-    if (key === "s") {
+    if (key === "w") {
+        tablero[head.y - 1][head.x].snake = true;
+        head.y--;
+        tablero[tail.y][tail.x].snake = false;
+        tail.y--;
+
+    } else if (key === "a") {
+        tablero[head.y][head.x - 1].snake = true;
+        head.x--;
+        tablero[tail.y][tail.x].snake = false;
+        tail.x--;
+    } else if (key === "s") {
         tablero[head.y + 1][head.x].snake = true;
-        head.y++
+        head.y++;
         tablero[tail.y][tail.x].snake = false;
         tail.y++;
-        console.log(tablero);
-    } else if (key === "a") {
-
-    } else if (key === "s") {
-
     } else if (key === "d") {
         tablero[head.y][head.x + 1].snake = true;
         head.x++;
         tablero[tail.y][tail.x].snake = false;
         tail.x++;
     }
+    console.log({ head });
+    console.log({ tail });
 }

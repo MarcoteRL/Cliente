@@ -7,14 +7,14 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(24, 95, 2);
+    background-color: rgb(63, 116, 14);
 }
-
-
 
 table {
     margin-top: 1%;
     border-spacing: 0;
+    box-shadow: 0px 0px 47px 0px rgba(0,0,0,0.75);
+    z-index: 100;
 }
 
 td {
@@ -43,5 +43,5 @@ h1 {
 }
 
 .serpiente {
-    background-color: black !important;
+    background-color: rgba(0, 0, 0, 0.349) !important;
 }
