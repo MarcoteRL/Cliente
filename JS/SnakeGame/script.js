@@ -76,15 +76,15 @@ document.addEventListener("keypress", async (e) => {
     }
 });
 
-let last;
-
 async function movimiento(key, tablero) {
     if (key === "w") {
         tablero[head.y - 1][head.x].snake = true;
         head.y--;
         tablero[tail.y][tail.x].snake = false;
+        if (tail.x != head.x) {
+            tail.x++;
+        }
         tail.y--;
-
     } else if (key === "a") {
         tablero[head.y][head.x - 1].snake = true;
         head.x--;
@@ -96,7 +96,6 @@ async function movimiento(key, tablero) {
         tablero[tail.y][tail.x].snake = false;
         tail.y++;
     } else if (key === "d") {
-        console.log("d");
         tablero[head.y][head.x + 1].snake = true;
         head.x++;
         tablero[tail.y][tail.x].snake = false;
