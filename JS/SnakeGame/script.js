@@ -96,6 +96,7 @@ async function movimiento(key, tablero) {
         tablero[tail.y][tail.x].snake = false;
         tail.y++;
     } else if (key === "d") {
+        console.log("d");
         tablero[head.y][head.x + 1].snake = true;
         head.x++;
         tablero[tail.y][tail.x].snake = false;
