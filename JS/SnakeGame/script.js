@@ -1,8 +1,11 @@
 "use strict";
 
 let tablero = [];
+let score = 0;
 let head;
 let tail;
+let apple = {};
+
 for (let y = 0; y < 15; y++) {
     tablero.push([]);
     for (let x = 0; x < 15; x++) {
@@ -47,7 +50,19 @@ async function background(tablero) {
 function showApple(tablero) {
     let y = Math.floor(Math.random() * tablero.length);
     let x = Math.floor(Math.random() * tablero.length);
+    apple.y = y;
+    apple.x = x;
     tablero[y][x].manzana = true;
+}
+
+function eatApple(head) {
+    if (head.y === apple.y && head.x === apple.x) {
+        score = score + 10;
+        tablero[head.y][head.x].manzana = false;
+        console.log({ score });
+        showApple(tablero);
+        actualizar(tablero)
+    }
 }
 
 async function colocarSnake(tablero) {
@@ -101,6 +116,5 @@ async function movimiento(key, tablero) {
         tablero[tail.y][tail.x].snake = false;
         tail.x++;
     }
-    console.log({ head });
-    console.log({ tail });
+    eatApple(head);
 }
