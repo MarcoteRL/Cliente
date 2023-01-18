@@ -58,6 +58,7 @@ function showApple() {
 function eatApple(head) {
     if (head.y === apple.y && head.x === apple.x) {
         score = score + 10;
+
         tablero[head.y][head.x].manzana = false;
         console.log({ score });
         showApple(tablero);
@@ -65,12 +66,13 @@ function eatApple(head) {
     }
 }
 
+let snake = [{ y: 7, x: 3 }, { y: 7, x: 2 }];
+
 async function colocarSnake(tablero) {
     tablero[7][2].snake = true;
     tablero[7][3].snake = true;
-    tablero[7][4].snake = true;
-    head = { y: 7, x: 4 };
-    tail = { y: 7, x: 2 };
+    head = snake[0];
+    tail = snake[snake.length - 1];
 }
 
 async function actualizar(tablero) {
@@ -91,95 +93,29 @@ document.addEventListener("keypress", async (e) => {
     }
 });
 
+/**
+ * 
+ * @param {*} key 
+ * @param {*} tablero 
+ * @returns 
+ */
 async function movimiento(key, tablero) {
-    console.log({ tecla });
-    if (key === "w") {
-        if (tecla != "s") {
-            tecla = "w";
-        }
-        tablero[head.y - 1][head.x].snake = true;
-        head.y--;
-        tablero[tail.y][tail.x].snake = false;
-        if (last_key === "a") {
-            if (tail.x != head.x) {
-                tail.x--;
-            } else {
-                tail.y--;
-            }
-        } else if (last_key === "d") {
-            if (tail.x != head.x) {
-                tail.x++;
-            } else {
-                tail.y--;
-            }
-        } else if (last_key === "s") {
-            return;
-        } else if (last_key === "w") {
-            tail.y--;
-        }
-    } else if (key === "a") {
-        if (tecla != "d") {
-            tecla = "a";
-        }
-        tablero[head.y][head.x - 1].snake = true;
-        head.x--;
-        tablero[tail.y][tail.x].snake = false;
-        if (last_key === "s") {
-            if (tail.y != head.y) {
-                tail.y++;
-            } else {
-                tail.x--;
-            }
-        } else if (last_key === "w") {
-            if (tail.y != head.y) {
-                tail.y--;
-            } else {
-                tail.x--;
-            }
-        } else if (last_key === "d") {
-            return;
-        } else if (last_key === "a") {
-            tail.x--;
-        }
-
-    } else if (key === "s") {
-        if (tecla != "w") {
-            tecla = "s";
-        }
-        tablero[head.y + 1][head.x].snake = true;
-        head.y++;
-        tablero[tail.y][tail.x].snake = false;
-        if (tail.x != head.x) {
-            tail.x++;
-        } else {
-            tail.y++;
-        }
-    } else if (key === "d") {
-        if (tecla != "a") {
-            tecla = "d";
-        }
-        tablero[head.y][head.x + 1].snake = true;
-        head.x++;
-        tablero[tail.y][tail.x].snake = false;
-        if (last_key === "s") {
-            console.log(tail.y);
-            console.log(head.y);
-            if (tail.y != head.y) {
-                tail.y++;
-            } else {
-                tail.x++;
-            }
-        } else if (last_key === "w") {
-            if (tail.y != head.y) {
-                tail.y--;
-            } else {
-                tail.x++;
-            }
-        } else if (last_key === "a") {
-            return;
-        } else if (last_key === "d") {
-            tail.x++;
-        }
+    let cabeza = snake[0];
+    for (let i = 1; i < snake.length; i++) {
+        snake[i] = snake[i + 1];
+    }
+    switch (key) {
+        case "w":
+            snake[0] = snake[0].y--;
+            break;
+        case "a":
+            snake[0] = snake[0].x--;
+            break;
+        case "s":
+            snake[0] = snake[0].y++;
+            break;
+        case "d":
+            snake[0] = snake[0].x++;
     }
     eatApple(head);
 }
