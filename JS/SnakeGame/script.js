@@ -68,7 +68,8 @@ function eatApple(head) {
 async function colocarSnake(tablero) {
     tablero[7][2].snake = true;
     tablero[7][3].snake = true;
-    head = { y: 7, x: 3 };
+    tablero[7][4].snake = true;
+    head = { y: 7, x: 4  };
     tail = { y: 7, x: 2 };
 }
 
@@ -84,37 +85,94 @@ async function actualizar(tablero) {
     await background(tablero);
 }
 
+let last_key = "d";
+
 document.addEventListener("keypress", async (e) => {
+    console.log(last_key);
     if (e.key === "w" || e.key === "a" || e.key === "s" || e.key === "d") {
         await movimiento(e.key, tablero);
         await actualizar(tablero);
+        last_key = e.key;
     }
-}); 
+});
 
 async function movimiento(key, tablero) {
+    console.log({ last_key });
     if (key === "w") {
         tablero[head.y - 1][head.x].snake = true;
         head.y--;
         tablero[tail.y][tail.x].snake = false;
-        if (tail.x != head.x) {
-            tail.x++;
+        if (last_key === "a") {
+            if (tail.x != head.x) {
+                tail.x--;
+            } else {
+                tail.y--;
+            }
+        } else if (last_key === "d") {
+            if (tail.x != head.x) {
+                tail.x++;
+            } else {
+                tail.y--;
+            }
+        } else if (last_key === "s") {
+            return;
+        } else if (last_key === "w") {
+            tail.y--;
         }
-        tail.y--;
     } else if (key === "a") {
         tablero[head.y][head.x - 1].snake = true;
         head.x--;
         tablero[tail.y][tail.x].snake = false;
-        tail.x--;
+        if (last_key === "s") {
+            if (tail.y != head.y) {
+                tail.y++;
+            } else {
+                tail.x--;
+            }
+        } else if (last_key === "w") {
+            if (tail.y != head.y) {
+                tail.y--;
+            } else {
+                tail.x--;
+            }
+        } else if (last_key === "d") {
+            return;
+        } else if (last_key === "a") {
+            tail.x--;
+        }
+
     } else if (key === "s") {
         tablero[head.y + 1][head.x].snake = true;
         head.y++;
         tablero[tail.y][tail.x].snake = false;
-        tail.y++;
+        if (tail.x != head.x) {
+            tail.x++;
+        } else {
+            tail.y++;
+        }
     } else if (key === "d") {
         tablero[head.y][head.x + 1].snake = true;
         head.x++;
         tablero[tail.y][tail.x].snake = false;
-        tail.x++;
+        if (last_key === "s") {
+            console.log(tail.y);
+            console.log(head.y);
+            if (tail.y != head.y) {
+                tail.y++;
+            } else {
+                tail.x++;
+            }
+        } else if (last_key === "w") {
+            if (tail.y != head.y) {
+                tail.y--;
+            } else {
+                tail.x++;
+            }
+        } else if (last_key === "a") {
+            return;
+        } else if (last_key === "d") {
+            tail.x++;
+        }
     }
     eatApple(head);
 }

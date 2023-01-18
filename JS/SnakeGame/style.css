@@ -45,3 +45,11 @@ h1 {
 .serpiente {
     background-color: rgba(0, 0, 0, 0.349) !important;
 }
+
+.scoreboard{
+    display: flex;
+    float: left;
+    width: 30vw;
+    height: 70vh;
+    border: 2px solid black;
+}
