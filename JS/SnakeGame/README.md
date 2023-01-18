@@ -61,5 +61,5 @@ async function background(tablero) {
 }
 ```
 
-<img src="https://i.imgur.com/dFvlcwf.png" width="10vw" height="10vh">
+<img src="https://i.imgur.com/dFvlcwf.png" width="60%" height="60%" aspect-ratio="1/1">
 
