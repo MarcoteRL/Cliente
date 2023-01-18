@@ -1,8 +1,9 @@
-## Snake Game
+# Snake Game
 
 El proyecto consiste en crear el mítico juego de la serpiente usando JavaScript, HTML y CSS.
 
 Lo primero que tenemos que hacer es crear un tablero, el cuál lo haremos con un array bidimensional, en cada casilla del tablero, añadiremos dos condiciones, si la casilla contiene la manzana o si la serpiente se encuentra en esa casilla.
+
 ``` js
 let tablero = []; 
 
@@ -16,13 +17,14 @@ for (let y = 0; y < 15; y++) {
 
 Lo siguiente será mostrarlo en el HTMl para poder visualizarlo en el navegador, para ello crearemos un div
 en nuestro index, dentro añadiremos un script llamando a nuestra función game, que la veremos después:
+
 ```html
 <div id="juego">
     <script>game()</script>
 </div>
 ```
-Ahora para mostrar nuestro tablero debemos de generarlo en javascript, para ello haremos una función que 
-nos creará una tabla de 15x15, comprobará en nuestro tablero donde se encuentra la serpiente y la manzana y los mostrará.
+
+Ahora para mostrar nuestro tablero debemos de generarlo en javascript, para ello haremos una función que nos creará una tabla de 15x15, comprobará en nuestro tablero donde se encuentra la serpiente y la manzana y los mostrará.
 También nos añadirá las clases par e impar para poder pintar el tablero:
 
 ```js
@@ -61,5 +63,30 @@ async function background(tablero) {
 }
 ```
 
+El resultado es este aplicando un poco de CSS:
+
 <img src="https://i.imgur.com/dFvlcwf.png" width="60%" height="60%" aspect-ratio="1/1">
 
+Ahora mostraremos la manzana para ello haremos una función que nos devuelva una posición aleatoria en el tablero y llamará a una función que actualizará el tablero.
+
+```js
+function showApple() {
+    let y = Math.floor(Math.random() * tablero.length);
+    let x = Math.floor(Math.random() * tablero.length);
+    apple.y = y;
+    apple.x = x;
+    tablero[y][x].manzana = true;
+}
+```
+
+De la misma manera colocaremos la serpiente en el tablero, pero a diferencia de la manzana no será aleatoria:
+
+```js
+async function colocarSnake(tablero) {
+    tablero[7][2].snake = true;
+    tablero[7][3].snake = true;
+    tablero[7][4].snake = true;
+    head = { y: 7, x: 4 };
+    tail = { y: 7, x: 2 };
+}
+```

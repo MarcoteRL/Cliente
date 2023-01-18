@@ -47,7 +47,7 @@ async function background(tablero) {
     body.appendChild(tbl);
 }
 
-function showApple(tablero) {
+function showApple() {
     let y = Math.floor(Math.random() * tablero.length);
     let x = Math.floor(Math.random() * tablero.length);
     apple.y = y;
