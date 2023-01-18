@@ -69,7 +69,7 @@ async function colocarSnake(tablero) {
     tablero[7][2].snake = true;
     tablero[7][3].snake = true;
     tablero[7][4].snake = true;
-    head = { y: 7, x: 4  };
+    head = { y: 7, x: 4 };
     tail = { y: 7, x: 2 };
 }
 
