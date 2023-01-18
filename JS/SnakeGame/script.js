@@ -73,32 +73,30 @@ async function colocarSnake(tablero) {
     tail = { y: 7, x: 2 };
 }
 
-async function game() {
-    colocarSnake(tablero);
-    showApple(tablero);
-    background(tablero);
-}
-
 async function actualizar(tablero) {
     const element = document.getElementById("tabla");
     element.remove();
     await background(tablero);
 }
 
-let last_key = "d";
-
+let last_key = "";
+let tecla = "";
 document.addEventListener("keypress", async (e) => {
-    console.log(last_key);
     if (e.key === "w" || e.key === "a" || e.key === "s" || e.key === "d") {
-        await movimiento(e.key, tablero);
-        await actualizar(tablero);
-        last_key = e.key;
+        if (e.key != last_key) {
+            await movimiento(e.key, tablero);
+            await actualizar(tablero);
+            last_key = e.key;
+        }
     }
 });
 
 async function movimiento(key, tablero) {
-    console.log({ last_key });
+    console.log({ tecla });
     if (key === "w") {
+        if (tecla != "s") {
+            tecla = "w";
+        }
         tablero[head.y - 1][head.x].snake = true;
         head.y--;
         tablero[tail.y][tail.x].snake = false;
@@ -120,6 +118,9 @@ async function movimiento(key, tablero) {
             tail.y--;
         }
     } else if (key === "a") {
+        if (tecla != "d") {
+            tecla = "a";
+        }
         tablero[head.y][head.x - 1].snake = true;
         head.x--;
         tablero[tail.y][tail.x].snake = false;
@@ -142,6 +143,9 @@ async function movimiento(key, tablero) {
         }
 
     } else if (key === "s") {
+        if (tecla != "w") {
+            tecla = "s";
+        }
         tablero[head.y + 1][head.x].snake = true;
         head.y++;
         tablero[tail.y][tail.x].snake = false;
@@ -151,6 +155,9 @@ async function movimiento(key, tablero) {
             tail.y++;
         }
     } else if (key === "d") {
+        if (tecla != "a") {
+            tecla = "d";
+        }
         tablero[head.y][head.x + 1].snake = true;
         head.x++;
         tablero[tail.y][tail.x].snake = false;
@@ -175,4 +182,23 @@ async function movimiento(key, tablero) {
         }
     }
     eatApple(head);
+}
+
+
+function interval() {
+    setInterval(async () => {
+        console.log({ last_key });
+        if (tecla != "" || tecla != last_key) {
+            await movimiento(tecla, tablero);
+            await actualizar(tablero);
+        }
+    }, 300);
+}
+
+
+async function game() {
+    colocarSnake(tablero);
+    showApple(tablero);
+    background(tablero);
+    interval();
 }
