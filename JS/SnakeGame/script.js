@@ -89,7 +89,7 @@ document.addEventListener("keypress", async (e) => {
         await movimiento(e.key, tablero);
         await actualizar(tablero);
     }
-});
+}); 
 
 async function movimiento(key, tablero) {
     if (key === "w") {
