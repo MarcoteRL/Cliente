@@ -2,8 +2,6 @@
 
 let tablero = [];
 let score = 0;
-let head;
-let tail;
 let apple = {};
 
 for (let y = 0; y < 15; y++) {
@@ -55,43 +53,162 @@ function showApple() {
     tablero[y][x].manzana = true;
 }
 
-function eatApple(head) {
-    if (head.y === apple.y && head.x === apple.x) {
+function eatApple(next) {
+    if (tablero[next.y][next.x].manzana) {
         score = score + 10;
-
-        tablero[head.y][head.x].manzana = false;
-        console.log({ score });
+        tablero[next.y][next.x].manzana = false;
         showApple(tablero);
-        actualizar(tablero)
+        return true;
+    } else {
+        return false;
     }
 }
 
-let snake = [{ y: 7, x: 3 }, { y: 7, x: 2 }];
+let snake = [{ y: 7, x: 2 }, { y: 7, x: 3 }];
 
 async function colocarSnake(tablero) {
     tablero[7][2].snake = true;
     tablero[7][3].snake = true;
-    head = snake[0];
-    tail = snake[snake.length - 1];
-}
-
-async function actualizar(tablero) {
-    const element = document.getElementById("tabla");
-    element.remove();
-    await background(tablero);
 }
 
 let last_key = "";
 let tecla = "";
+
 document.addEventListener("keypress", async (e) => {
     if (e.key === "w" || e.key === "a" || e.key === "s" || e.key === "d") {
         if (e.key != last_key) {
-            await movimiento(e.key, tablero);
-            await actualizar(tablero);
-            last_key = e.key;
+            await moverTablero(e.key);
         }
     }
 });
+
+async function moverTablero(key) {
+    let tabla = document.getElementById('tabla');
+    tabla.remove();
+    let cola = snake[0];
+    let cabeza = snake[snake.length - 1];
+    switch (key) {
+        case "w":
+            if (tecla != 's') {
+                if (eatApple({ "y": cabeza.y - 1, "x": cabeza.x })) {
+                    tablero[(cabeza.y) - 1][(cabeza.x)].snake = true;
+                    snake.push({ "y": cabeza.y - 1, "x": cabeza.x });
+                } else {
+                    tablero[cola.y][cola.x].snake = false;
+                    tablero[(cabeza.y) - 1][(cabeza.x)].snake = true;
+                    movimiento(key);
+                }
+                tecla = 'w';
+            }
+            break;
+
+        case "a":
+            if (tecla != 'd') {
+                if (eatApple({ "y": cabeza.y, "x": cabeza.x - 1 })) {
+                    tablero[cabeza.y][(cabeza.x) - 1].snake = true;
+                    snake.push({ "y": cabeza.y, "x": cabeza.x - 1 });
+                } else {
+                    tablero[cola.y][cola.x].snake = false;
+                    tablero[(cabeza.y)][(cabeza.x) - 1].snake = true;
+                    movimiento(key);
+                }
+                tecla = 'a';
+            }
+            break;
+
+        case "s":
+            if (tecla != 'w') {
+                if (eatApple({ "y": cabeza.y + 1, "x": cabeza.x })) {
+                    tablero[(cabeza.y) + 1][(cabeza.x)].snake = true;
+                    snake.push({ "y": cabeza.y + 1, "x": cabeza.x });
+                } else {
+                    tablero[cola.y][cola.x].snake = false;
+                    tablero[(cabeza.y) + 1][(cabeza.x)].snake = true;
+                    movimiento(key);
+                }
+                tecla = 's';
+            }
+            break;
+
+        case "d":
+            if (tecla != 'a') {
+                if (eatApple({ "y": cabeza.y, "x": cabeza.x + 1 })) {
+                    tablero[cabeza.y][(cabeza.x) + 1].snake = true;
+                    snake.push({ "y": cabeza.y, "x": cabeza.x + 1 });
+                } else {
+                    tablero[cola.y][cola.x].snake = false;
+                    tablero[cabeza.y][(cabeza.x) + 1].snake = true;
+                    movimiento(key);
+                }
+                tecla = 'd';
+            }
+            break;
+    }
+
+    await background(tablero);
+    // const element = document.getElementById("tabla");
+    // element.remove();
+    // let cabeza = snake[snake.length - 1];
+    // let cola = snake[0];
+    // switch (key) {
+    //     case "w":
+    //         if (key != "s") {
+    //             if (eatApple({ "y": cabeza.y - 1, "x": cabeza.x })) {
+    //                 tablero[cabeza.y - 1][cabeza.x].snake = true;
+    //                 snake.push({ "y": cabeza.y - 1, "x": cabeza.x });
+    //             } else {
+    //                 tablero[cabeza.y - 1][cabeza.x].snake = true;
+    //                 tablero[cola.y][cola.x].snake = false;
+    //                 movimiento(key);
+    //             }
+    //             tecla = "w";
+    //         }
+    //         break;
+    //     case "a":
+    //         if (key != "d") {
+    //             if (eatApple({ "y": cabeza.y, "x": cabeza.x - 1 })) {
+    //                 tablero[cabeza.y][cabeza.x - 1].snake = true;
+    //                 snake.push({ "y": cabeza.y, "x": cabeza.x - 1 });
+    //             } else {
+    //                 tablero[cabeza.y][cabeza.x - 1].snake = true;
+    //                 tablero[cola.y][cola.x].snake = false;
+    //                 movimiento(key);
+    //             }
+    //             tecla = "a";
+    //         }
+    //         break;
+    //     case "s":
+    //         if (key != "w") {
+    //             if (eatApple({ "y": cabeza.y + 1, "x": cabeza.x })) {
+    //                 tablero[cabeza.y + 1][cabeza.x].snake = true;
+    //                 snake.push({ "y": cabeza.y + 1, "x": cabeza.x });
+    //             } else {
+    //                 tablero[cabeza.y + 1][cabeza.x].snake = true;
+    //                 tablero[cola.y][cola.x].snake = false;
+    //                 movimiento(key);
+    //             }
+    //             tecla = "s";
+    //         }
+    //         break;
+    //     case "d":
+    //         if (key != "a") {
+    //             if (eatApple({ "y": cabeza.y, "x": cabeza.x + 1 })) {
+    //                 tablero[cabeza.y][cabeza.x + 1].snake = true;
+    //                 snake.push({ "y": cabeza.y, "x": cabeza.x + 1 });
+    //             } else {
+    //                 tablero[cabeza.y][cabeza.x + 1].snake = true;
+    //                 tablero[cola.y][cola.x].snake = false;
+    //                 movimiento(key);
+    //             }
+    //             tecla = "d";
+    //         }
+    //         break;
+    //     default:
+    //         break;
+    // }
+
+    // await background(tablero);
+}
 
 /**
  * 
@@ -99,36 +216,34 @@ document.addEventListener("keypress", async (e) => {
  * @param {*} tablero 
  * @returns 
  */
-async function movimiento(key, tablero) {
-    let cabeza = snake[0];
-    for (let i = 1; i < snake.length; i++) {
+async function movimiento(key) {
+    for (let i = 0; i < snake.length - 1; i++) {
         snake[i] = snake[i + 1];
     }
     switch (key) {
         case "w":
-            snake[0] = snake[0].y--;
+            snake[snake.length - 1].y--;
             break;
         case "a":
-            snake[0] = snake[0].x--;
+            snake[snake.length - 1].x--;
             break;
         case "s":
-            snake[0] = snake[0].y++;
+            snake[snake.length - 1].y++;
             break;
         case "d":
-            snake[0] = snake[0].x++;
+            snake[snake.length - 1].x++;
+            break;
     }
-    eatApple(head);
 }
 
 
 function interval() {
     setInterval(async () => {
         console.log({ last_key });
-        if (tecla != "" || tecla != last_key) {
-            await movimiento(tecla, tablero);
-            await actualizar(tablero);
+        if (tecla != "") {
+            await moverTablero(tecla);
         }
-    }, 300);
+    }, 800);
 }
 
 
@@ -136,5 +251,5 @@ async function game() {
     colocarSnake(tablero);
     showApple(tablero);
     background(tablero);
-    interval();
+    // interval();
 }
