@@ -58,7 +58,6 @@ function showApple() {
 function eatApple(head) {
     if (head.y === apple.y && head.x === apple.x) {
         score = score + 10;
-
         tablero[head.y][head.x].manzana = false;
         console.log({ score });
         showApple(tablero);
@@ -66,13 +65,14 @@ function eatApple(head) {
     }
 }
 
-let snake = [{ y: 7, x: 3 }, { y: 7, x: 2 }];
+let snake = [{ y: 7, x: 2 }, { y: 7, x: 3 }];
 
 async function colocarSnake(tablero) {
     tablero[7][2].snake = true;
     tablero[7][3].snake = true;
-    head = snake[0];
-    tail = snake[snake.length - 1];
+    tail = snake[0];
+    head = snake[snake.length - 1];
+    console.log({ head });
 }
 
 async function actualizar(tablero) {
@@ -100,23 +100,40 @@ document.addEventListener("keypress", async (e) => {
  * @returns 
  */
 async function movimiento(key, tablero) {
-    let cabeza = snake[0];
-    for (let i = 1; i < snake.length; i++) {
+    for (let i = 0; i < snake.length - 1; i++) {
+        tablero[snake[i].y][snake[i].x].snake = false;
         snake[i] = snake[i + 1];
+        tablero[snake[i].y][snake[i].x].snake = true;
+
     }
+    console.log(snake.length);
     switch (key) {
         case "w":
-            snake[0] = snake[0].y--;
+            if (last_key != "s") {
+                tecla = "w";
+            }
+            snake[0].y--;
             break;
         case "a":
-            snake[0] = snake[0].x--;
+            if (last_key != "d") {
+                tecla = "a";
+            }
+            snake[0].x--;
             break;
         case "s":
-            snake[0] = snake[0].y++;
+            if (last_key != "w") {
+                tecla = "s";
+            }
+            snake[0].y++;
             break;
         case "d":
-            snake[0] = snake[0].x++;
+            if (last_key != "a") {
+                tecla = "d";
+            }
+            snake[0].x++;
+            break;
     }
+    console.log(tablero);
     eatApple(head);
 }
 
