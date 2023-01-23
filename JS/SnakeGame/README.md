@@ -2,6 +2,8 @@
 
 El proyecto consiste en crear el mítico juego de la serpiente usando JavaScript, HTML y CSS.
 
+## Crear tablero
+
 Lo primero que tenemos que hacer es crear un tablero, el cuál lo haremos con un array bidimensional, en cada casilla del tablero, añadiremos dos condiciones, si la casilla contiene la manzana o si la serpiente se encuentra en esa casilla.
 
 ``` js
@@ -15,7 +17,7 @@ for (let y = 0; y < 15; y++) {
 }
 ```
 
-Lo siguiente será mostrarlo en el HTMl para poder visualizarlo en el navegador, para ello crearemos un div
+Lo siguiente será mostrarlo en el HTML para poder visualizarlo en el navegador, para ello crearemos un div
 en nuestro index, dentro añadiremos un script llamando a nuestra función game, que la veremos después:
 
 ```html
@@ -79,14 +81,13 @@ function showApple() {
 }
 ```
 
+## Mostrar serpiente
+
 De la misma manera colocaremos la serpiente en el tablero, pero a diferencia de la manzana no será aleatoria:
 
 ```js
-async function colocarSnake(tablero) {
+function colocarSnake(tablero) {
     tablero[7][2].snake = true;
     tablero[7][3].snake = true;
-    tablero[7][4].snake = true;
-    head = { y: 7, x: 4 };
-    tail = { y: 7, x: 2 };
 }
 ```

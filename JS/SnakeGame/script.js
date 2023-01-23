@@ -3,6 +3,7 @@
 let tablero = [];
 let score = 0;
 let apple = {};
+let speed = 600;
 
 for (let y = 0; y < 15; y++) {
     tablero.push([]);
@@ -11,7 +12,7 @@ for (let y = 0; y < 15; y++) {
     }
 }
 
-async function background(tablero) {
+function background(tablero) {
     const body = document.body,
         tbl = document.createElement('table');
     tbl.id = "tabla";
@@ -54,19 +55,27 @@ function showApple() {
 }
 
 function eatApple(next) {
-    if (tablero[next.y][next.x].manzana) {
-        score = score + 10;
-        tablero[next.y][next.x].manzana = false;
-        showApple(tablero);
-        return true;
-    } else {
-        return false;
+    let scoreboard = document.getElementById("scoreboard");
+    try {
+        if (tablero[next.y][next.x].manzana) {
+            score = score + 10;
+            scoreboard.innerHTML = "Puntuación: " + score;
+            tablero[next.y][next.x].manzana = false;
+            showApple(tablero);
+            return true;
+        } else if (tablero[next.y][next.x].snake) {
+            window.location.href = "index.html";
+        } else {
+            return false;
+        }
+    } catch (error) {
+        window.location.href = "index.html";
     }
 }
 
 let snake = [{ y: 7, x: 2 }, { y: 7, x: 3 }];
 
-async function colocarSnake(tablero) {
+function colocarSnake(tablero) {
     tablero[7][2].snake = true;
     tablero[7][3].snake = true;
 }
@@ -74,15 +83,15 @@ async function colocarSnake(tablero) {
 let last_key = "";
 let tecla = "";
 
-document.addEventListener("keypress", async (e) => {
+document.addEventListener("keypress", (e) => {
     if (e.key === "w" || e.key === "a" || e.key === "s" || e.key === "d") {
-        if (e.key != last_key) {
-            await moverTablero(e.key);
+        if (e.key != tecla) {
+            moverTablero(e.key);
         }
     }
 });
 
-async function moverTablero(key) {
+function moverTablero(key) {
     let tabla = document.getElementById('tabla');
     tabla.remove();
     let cola = snake[0];
@@ -144,70 +153,7 @@ async function moverTablero(key) {
             }
             break;
     }
-
-    await background(tablero);
-    // const element = document.getElementById("tabla");
-    // element.remove();
-    // let cabeza = snake[snake.length - 1];
-    // let cola = snake[0];
-    // switch (key) {
-    //     case "w":
-    //         if (key != "s") {
-    //             if (eatApple({ "y": cabeza.y - 1, "x": cabeza.x })) {
-    //                 tablero[cabeza.y - 1][cabeza.x].snake = true;
-    //                 snake.push({ "y": cabeza.y - 1, "x": cabeza.x });
-    //             } else {
-    //                 tablero[cabeza.y - 1][cabeza.x].snake = true;
-    //                 tablero[cola.y][cola.x].snake = false;
-    //                 movimiento(key);
-    //             }
-    //             tecla = "w";
-    //         }
-    //         break;
-    //     case "a":
-    //         if (key != "d") {
-    //             if (eatApple({ "y": cabeza.y, "x": cabeza.x - 1 })) {
-    //                 tablero[cabeza.y][cabeza.x - 1].snake = true;
-    //                 snake.push({ "y": cabeza.y, "x": cabeza.x - 1 });
-    //             } else {
-    //                 tablero[cabeza.y][cabeza.x - 1].snake = true;
-    //                 tablero[cola.y][cola.x].snake = false;
-    //                 movimiento(key);
-    //             }
-    //             tecla = "a";
-    //         }
-    //         break;
-    //     case "s":
-    //         if (key != "w") {
-    //             if (eatApple({ "y": cabeza.y + 1, "x": cabeza.x })) {
-    //                 tablero[cabeza.y + 1][cabeza.x].snake = true;
-    //                 snake.push({ "y": cabeza.y + 1, "x": cabeza.x });
-    //             } else {
-    //                 tablero[cabeza.y + 1][cabeza.x].snake = true;
-    //                 tablero[cola.y][cola.x].snake = false;
-    //                 movimiento(key);
-    //             }
-    //             tecla = "s";
-    //         }
-    //         break;
-    //     case "d":
-    //         if (key != "a") {
-    //             if (eatApple({ "y": cabeza.y, "x": cabeza.x + 1 })) {
-    //                 tablero[cabeza.y][cabeza.x + 1].snake = true;
-    //                 snake.push({ "y": cabeza.y, "x": cabeza.x + 1 });
-    //             } else {
-    //                 tablero[cabeza.y][cabeza.x + 1].snake = true;
-    //                 tablero[cola.y][cola.x].snake = false;
-    //                 movimiento(key);
-    //             }
-    //             tecla = "d";
-    //         }
-    //         break;
-    //     default:
-    //         break;
-    // }
-
-    // await background(tablero);
+    background(tablero);
 }
 
 /**
@@ -216,40 +162,42 @@ async function moverTablero(key) {
  * @param {*} tablero 
  * @returns 
  */
-async function movimiento(key) {
+function movimiento(key) {
+    let cabeza = snake[snake.length - 1]
     for (let i = 0; i < snake.length - 1; i++) {
         snake[i] = snake[i + 1];
     }
     switch (key) {
         case "w":
-            snake[snake.length - 1].y--;
+            snake[snake.length - 1] = { "y": cabeza.y - 1, "x": cabeza.x };
             break;
         case "a":
-            snake[snake.length - 1].x--;
+            snake[snake.length - 1] = { "y": cabeza.y, "x": cabeza.x - 1 };
             break;
         case "s":
-            snake[snake.length - 1].y++;
+            snake[snake.length - 1] = { "y": cabeza.y + 1, "x": cabeza.x };
             break;
         case "d":
-            snake[snake.length - 1].x++;
+            snake[snake.length - 1] = { "y": cabeza.y, "x": cabeza.x + 1 };
             break;
     }
 }
 
 
-function interval() {
-    setInterval(async () => {
-        console.log({ last_key });
+const interval = () => {
+    setInterval(() => {
         if (tecla != "") {
-            await moverTablero(tecla);
+            moverTablero(tecla);
         }
-    }, 800);
+    }, 400);
 }
 
 
-async function game() {
+function game() {
     colocarSnake(tablero);
     showApple(tablero);
     background(tablero);
-    // interval();
+    interval(speed);
+    console.log(speed);
+    // moverTablero(tecla)
 }
