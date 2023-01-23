@@ -91,3 +91,115 @@ function colocarSnake(tablero) {
     tablero[7][3].snake = true;
 }
 ```
+
+## Comer manzana
+
+La función de eatApple recibe el elemento next que es la posición a la que la serpiente se va a mover.
+Verifica si la siguiente casilla contiene una manzana y si es así aumenta la puntuación y llama otra vez a la función de showApple.
+
+Si la casilla siguiente es una parte del cuerpo de la serpiente o una casilla fuera del tablero, termina el juego y redirecciona al jugador a otra pantalla.
+
+```js
+function eatApple(next) {
+    let scoreboard = document.getElementById("scoreboard");
+    try {
+        if (tablero[next.y][next.x].manzana) {
+            score = score + 10;
+            scoreboard.innerHTML = "Puntuación: " + score;
+            tablero[next.y][next.x].manzana = false;
+            showApple(tablero);
+            return true;
+        } else if (tablero[next.y][next.x].snake) {
+            window.location.href = "index.html";
+        } else {
+            return false;
+        }
+    } catch (error) {
+        window.location.href = "index.html";
+    }
+}
+```
+
+## Movimiento
+
+Para mover la serpiente lo primero que debemos de hacer es capturar las teclas "WASD" para poder realizar los movimientos, para ello utilizaremos addEventListener.
+
+```js
+document.addEventListener("keypress", (e) => {
+    if (e.key === "w" || e.key === "a" || e.key === "s" || e.key === "d") {
+        if (e.key != tecla) {
+            moverTablero(e.key);
+        }
+    }
+});
+```
+
+Para mover la serpiente en nuestro tablero, necesitamos dos funciones, la función moverTablero, que recibe la tecla que pulsa el jugador.
+Esta función se encarga de borrar el tablero anterior, llamar a la función eatApple y modificar el array de la serpiente, cambiando la cola por la cabeza, para que así se realice el movimiento.
+
+```js
+function moverTablero(key) {
+    let tabla = document.getElementById('tabla');
+    tabla.remove();
+    let cola = snake[0];
+    let cabeza = snake[snake.length - 1];
+    switch (key) {
+        case "w":
+            if (tecla != 's') {
+                if (eatApple({ "y": cabeza.y - 1, "x": cabeza.x })) {
+                    tablero[(cabeza.y) - 1][(cabeza.x)].snake = true;
+                    snake.push({ "y": cabeza.y - 1, "x": cabeza.x });
+                } else {
+                    tablero[cola.y][cola.x].snake = false;
+                    tablero[(cabeza.y) - 1][(cabeza.x)].snake = true;
+                    movimiento(key);
+                }
+                tecla = 'w';
+            }
+            break;
+
+        case "a":
+            if (tecla != 'd') {
+                if (eatApple({ "y": cabeza.y, "x": cabeza.x - 1 })) {
+                    tablero[cabeza.y][(cabeza.x) - 1].snake = true;
+                    snake.push({ "y": cabeza.y, "x": cabeza.x - 1 });
+                } else {
+                    tablero[cola.y][cola.x].snake = false;
+                    tablero[(cabeza.y)][(cabeza.x) - 1].snake = true;
+                    movimiento(key);
+                }
+                tecla = 'a';
+            }
+            break;
+
+        case "s":
+            if (tecla != 'w') {
+                if (eatApple({ "y": cabeza.y + 1, "x": cabeza.x })) {
+                    tablero[(cabeza.y) + 1][(cabeza.x)].snake = true;
+                    snake.push({ "y": cabeza.y + 1, "x": cabeza.x });
+                } else {
+                    tablero[cola.y][cola.x].snake = false;
+                    tablero[(cabeza.y) + 1][(cabeza.x)].snake = true;
+                    movimiento(key);
+                }
+                tecla = 's';
+            }
+            break;
+
+        case "d":
+            if (tecla != 'a') {
+                if (eatApple({ "y": cabeza.y, "x": cabeza.x + 1 })) {
+                    tablero[cabeza.y][(cabeza.x) + 1].snake = true;
+                    snake.push({ "y": cabeza.y, "x": cabeza.x + 1 });
+                } else {
+                    tablero[cola.y][cola.x].snake = false;
+                    tablero[cabeza.y][(cabeza.x) + 1].snake = true;
+                    movimiento(key);
+                }
+                tecla = 'd';
+            }
+            break;
+    }
+    background(tablero);
+}
+```
