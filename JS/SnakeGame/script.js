@@ -156,12 +156,6 @@ function moverTablero(key) {
     background(tablero);
 }
 
-/**
- * 
- * @param {*} key 
- * @param {*} tablero 
- * @returns 
- */
 function movimiento(key) {
     let cabeza = snake[snake.length - 1]
     for (let i = 0; i < snake.length - 1; i++) {
@@ -192,12 +186,9 @@ const interval = () => {
     }, 400);
 }
 
-
 function game() {
     colocarSnake(tablero);
     showApple(tablero);
     background(tablero);
     interval(speed);
-    console.log(speed);
-    // moverTablero(tecla)
 }
