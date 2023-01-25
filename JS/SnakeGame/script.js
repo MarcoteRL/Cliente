@@ -183,7 +183,7 @@ const interval = () => {
         if (tecla != "") {
             moverTablero(tecla);
         }
-    }, 400);
+    }, 200);
 }
 
 function game() {
