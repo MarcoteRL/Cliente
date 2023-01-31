@@ -187,7 +187,7 @@ const interval = () => {
 }
 
 function game() {
-    colocarSnake(tablero);
+    colocarSnake(tablero);  
     showApple(tablero);
     background(tablero);
     interval(speed);
