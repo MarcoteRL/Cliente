@@ -1,0 +1,12 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    margin: 0;
+    overflow-y: hidden;
+}
+
+canvas {
+    background-color: red;
+}
