@@ -8,7 +8,6 @@ function countBy(x, n) {
     return z;
 }
 
-
 console.log(countBy(2, 5));
 
 function findEvenIndex(arr) {
