@@ -63,7 +63,6 @@ function animate() {
     } else if (keys.a.pressed) {
         player.velocity.x = -3
     }
-
 }
 
 animate();
