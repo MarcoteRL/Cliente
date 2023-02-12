@@ -25,8 +25,7 @@ floorCollisions2D.forEach((row, y) => {
     })
 })
 
-const gravity = 0.3;
-
+const gravity = 0.5;
 
 const player = new Player({ x: 100, y: 100 });
 const player2 = new Player({ x: 400, y: 9 });
@@ -48,8 +47,8 @@ function animate() {
     c.fillStyle = "white";
     c.fillRect(0, 0, canvas.width, canvas.height);
     c.save()
-    // c.scale(4, 4);
-    // c.translate(0, -background.image.height + scaledCanvas.height)
+    c.scale(4, 4);
+    c.translate(0, -background.image.height + scaledCanvas.height);
     background.update();
     collisionBlocks.forEach((collisionBlock) => {
         collisionBlock.update()
