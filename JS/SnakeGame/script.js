@@ -80,9 +80,6 @@ function colocarSnake(tablero) {
     tablero[7][3].snake = true;
 }
 
-let last_key = "";
-let tecla = "";
-
 document.addEventListener("keypress", (e) => {
     if (e.key === "w" || e.key === "a" || e.key === "s" || e.key === "d") {
         if (e.key != tecla) {
@@ -90,6 +87,8 @@ document.addEventListener("keypress", (e) => {
         }
     }
 });
+
+let tecla = "";
 
 function moverTablero(key) {
     let tabla = document.getElementById('tabla');
