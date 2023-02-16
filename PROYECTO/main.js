@@ -25,10 +25,3 @@ fetchMovies(url, options).then(data => {
         console.log(data.image.url);
     })
 });
-
-
-
-
-
-
-
