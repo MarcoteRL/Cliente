@@ -12,7 +12,6 @@ const options = {
 
 let url2 = 'https://imdb8.p.rapidapi.com/title/get-base?tconst=';
 
-
 async function fetchMovies(url, options) {
     const response = await fetch(url, options);
     return await response.json();
