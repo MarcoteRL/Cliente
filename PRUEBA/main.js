@@ -1,28 +1,30 @@
-"use strict";
+let s = "abcabcbb";
 
-function countBy(x, n) {
-    let z = [];
-    for (let i = x; z.length < n; i = i + x) {
-        z.push(i);
+function patata(s) {
+    let substring = "";
+    let substring_larga = "";
+    let letras_usadas = [];
+    for (let i = 0; i < s.length; i++) {
+        if (letras_usadas.includes(s.charAt(i))) {
+            if (substring.length > substring_larga.length) {
+                substring_larga = substring;
+            }
+            i = s.indexOf(s.charAt(i)) + 1;
+            substring = s.charAt(i);
+            letras_usadas = [];
+            letras_usadas.push(substring);
+            console.log("hola " + substring, letras_usadas)
+        } else {
+            substring += s.charAt(i);
+            letras_usadas.push(s.charAt(i));
+            console.log(substring, letras_usadas)
+        }
+
+        if(i == s.length - 1 && substring.length > substring_larga.length){
+            substring_larga = substring;
+        }
     }
-    return z;
+    return substring_larga.length;
 }
 
-console.log(countBy(2, 5));
-
-function findEvenIndex(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        let suma = 0;
-        if (arr[i - 1] === undefined) {
-            arr[i - 1] = 0;
-        }
-        for (let j = i + 1; j < arr.length; j++) {
-            suma += arr[j];
-        }
-        if (suma == arr[i]) {
-            return i;
-        }
-    }
-}
-
-console.log(findEvenIndex([1, 2, 3, 4, 3, 2, 1]));
+console.log(patata(s))
